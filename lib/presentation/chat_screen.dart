@@ -1,18 +1,22 @@
 import 'dart:developer';
 
+import 'package:chat_with_gpt/application/models%20bloc/models_bloc.dart';
 import 'package:chat_with_gpt/core/colors.dart';
 import 'package:chat_with_gpt/core/constants.dart';
+import 'package:chat_with_gpt/domain/model/models_resp/models_resp.dart';
 import 'package:chat_with_gpt/presentation/widgets/chat_widget.dart';
 import 'package:chat_with_gpt/presentation/widgets/text_widget.dart';
-
+import 'package:chat_with_gpt/services/api_service.dart';
 import 'package:chat_with_gpt/services/asset_manager.dart';
 import 'package:chat_with_gpt/services/services.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class ChatScreen extends StatelessWidget {
   ChatScreen({super.key});
   final _textEditingController = TextEditingController();
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,8 +31,10 @@ class ChatScreen extends StatelessWidget {
           IconButton(
             onPressed: () async {
               log("getting");
-              
+              context.read<ModelsBloc>().add(const ModelsEvent.getModels());
               await Services.showModalSheet(context: context);
+              
+              
             },
             icon: const Icon(
               Icons.more_vert_outlined,
@@ -75,7 +81,9 @@ class ChatScreen extends StatelessWidget {
                   ),
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () async {
+                    
+                  },
                   icon: const Icon(
                     Icons.send,
                     color: kWhiteColor,
@@ -89,3 +97,4 @@ class ChatScreen extends StatelessWidget {
     );
   }
 }
+
