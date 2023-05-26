@@ -1,7 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.chat_with_gpt">
+    <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="chat_with_gpt"
+        android:label="Chat with GPT"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
@@ -31,4 +32,5 @@
             android:name="flutterEmbedding"
             android:value="2" />
     </application>
+    
 </manifest>

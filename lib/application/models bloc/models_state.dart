@@ -4,13 +4,15 @@ part of 'models_bloc.dart';
 class ModelsState with _$ModelsState {
   const factory ModelsState({
     required bool isLoading,
-    required List<ModelsResp> modelsList,
+    required bool hasError,
+    required List<String> modelsList,
     required String currentModel,
   }) = _ModelsState;
 
   factory ModelsState.initial() => const ModelsState(
         isLoading: false,
+        hasError: false,
         modelsList: [],
-        currentModel: "whisper-1",
+        currentModel: "gpt-3.5-turbo",
       );
 }

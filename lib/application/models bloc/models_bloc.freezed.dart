@@ -293,7 +293,8 @@ abstract class _SelectModel implements ModelsEvent {
 /// @nodoc
 mixin _$ModelsState {
   bool get isLoading => throw _privateConstructorUsedError;
-  List<ModelsResp> get modelsList => throw _privateConstructorUsedError;
+  bool get hasError => throw _privateConstructorUsedError;
+  List<String> get modelsList => throw _privateConstructorUsedError;
   String get currentModel => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -307,7 +308,11 @@ abstract class $ModelsStateCopyWith<$Res> {
           ModelsState value, $Res Function(ModelsState) then) =
       _$ModelsStateCopyWithImpl<$Res, ModelsState>;
   @useResult
-  $Res call({bool isLoading, List<ModelsResp> modelsList, String currentModel});
+  $Res call(
+      {bool isLoading,
+      bool hasError,
+      List<String> modelsList,
+      String currentModel});
 }
 
 /// @nodoc
@@ -324,6 +329,7 @@ class _$ModelsStateCopyWithImpl<$Res, $Val extends ModelsState>
   @override
   $Res call({
     Object? isLoading = null,
+    Object? hasError = null,
     Object? modelsList = null,
     Object? currentModel = null,
   }) {
@@ -332,10 +338,14 @@ class _$ModelsStateCopyWithImpl<$Res, $Val extends ModelsState>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      hasError: null == hasError
+          ? _value.hasError
+          : hasError // ignore: cast_nullable_to_non_nullable
+              as bool,
       modelsList: null == modelsList
           ? _value.modelsList
           : modelsList // ignore: cast_nullable_to_non_nullable
-              as List<ModelsResp>,
+              as List<String>,
       currentModel: null == currentModel
           ? _value.currentModel
           : currentModel // ignore: cast_nullable_to_non_nullable
@@ -352,7 +362,11 @@ abstract class _$$_ModelsStateCopyWith<$Res>
       __$$_ModelsStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isLoading, List<ModelsResp> modelsList, String currentModel});
+  $Res call(
+      {bool isLoading,
+      bool hasError,
+      List<String> modelsList,
+      String currentModel});
 }
 
 /// @nodoc
@@ -367,6 +381,7 @@ class __$$_ModelsStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isLoading = null,
+    Object? hasError = null,
     Object? modelsList = null,
     Object? currentModel = null,
   }) {
@@ -375,10 +390,14 @@ class __$$_ModelsStateCopyWithImpl<$Res>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      hasError: null == hasError
+          ? _value.hasError
+          : hasError // ignore: cast_nullable_to_non_nullable
+              as bool,
       modelsList: null == modelsList
           ? _value._modelsList
           : modelsList // ignore: cast_nullable_to_non_nullable
-              as List<ModelsResp>,
+              as List<String>,
       currentModel: null == currentModel
           ? _value.currentModel
           : currentModel // ignore: cast_nullable_to_non_nullable
@@ -392,15 +411,18 @@ class __$$_ModelsStateCopyWithImpl<$Res>
 class _$_ModelsState with DiagnosticableTreeMixin implements _ModelsState {
   const _$_ModelsState(
       {required this.isLoading,
-      required final List<ModelsResp> modelsList,
+      required this.hasError,
+      required final List<String> modelsList,
       required this.currentModel})
       : _modelsList = modelsList;
 
   @override
   final bool isLoading;
-  final List<ModelsResp> _modelsList;
   @override
-  List<ModelsResp> get modelsList {
+  final bool hasError;
+  final List<String> _modelsList;
+  @override
+  List<String> get modelsList {
     if (_modelsList is EqualUnmodifiableListView) return _modelsList;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_modelsList);
@@ -411,7 +433,7 @@ class _$_ModelsState with DiagnosticableTreeMixin implements _ModelsState {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ModelsState(isLoading: $isLoading, modelsList: $modelsList, currentModel: $currentModel)';
+    return 'ModelsState(isLoading: $isLoading, hasError: $hasError, modelsList: $modelsList, currentModel: $currentModel)';
   }
 
   @override
@@ -420,6 +442,7 @@ class _$_ModelsState with DiagnosticableTreeMixin implements _ModelsState {
     properties
       ..add(DiagnosticsProperty('type', 'ModelsState'))
       ..add(DiagnosticsProperty('isLoading', isLoading))
+      ..add(DiagnosticsProperty('hasError', hasError))
       ..add(DiagnosticsProperty('modelsList', modelsList))
       ..add(DiagnosticsProperty('currentModel', currentModel));
   }
@@ -431,6 +454,8 @@ class _$_ModelsState with DiagnosticableTreeMixin implements _ModelsState {
             other is _$_ModelsState &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
+            (identical(other.hasError, hasError) ||
+                other.hasError == hasError) &&
             const DeepCollectionEquality()
                 .equals(other._modelsList, _modelsList) &&
             (identical(other.currentModel, currentModel) ||
@@ -438,7 +463,7 @@ class _$_ModelsState with DiagnosticableTreeMixin implements _ModelsState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading,
+  int get hashCode => Object.hash(runtimeType, isLoading, hasError,
       const DeepCollectionEquality().hash(_modelsList), currentModel);
 
   @JsonKey(ignore: true)
@@ -451,13 +476,16 @@ class _$_ModelsState with DiagnosticableTreeMixin implements _ModelsState {
 abstract class _ModelsState implements ModelsState {
   const factory _ModelsState(
       {required final bool isLoading,
-      required final List<ModelsResp> modelsList,
+      required final bool hasError,
+      required final List<String> modelsList,
       required final String currentModel}) = _$_ModelsState;
 
   @override
   bool get isLoading;
   @override
-  List<ModelsResp> get modelsList;
+  bool get hasError;
+  @override
+  List<String> get modelsList;
   @override
   String get currentModel;
   @override

@@ -1,9 +1,11 @@
 import 'package:chat_with_gpt/core/colors.dart';
-import 'package:chat_with_gpt/core/constants.dart';
+
 import 'package:chat_with_gpt/presentation/chat_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 
+import 'application/chat bloc/chat_bloc.dart';
 import 'application/models bloc/models_bloc.dart';
 
 void main() {
@@ -19,13 +21,16 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => ModelsBloc()),
+        BlocProvider(create: (context) => ChatBloc()),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
-            scaffoldBackgroundColor: kScaffoldBackgroundColor,
-            appBarTheme: const AppBarTheme(color: kCardColor),
-            primarySwatch: Colors.grey),
+          fontFamily: GoogleFonts.notoSansMalayalam().fontFamily,
+          scaffoldBackgroundColor: kScaffoldBackgroundColor,
+          appBarTheme: const AppBarTheme(color: kCardColor),
+          primarySwatch: Colors.grey,
+        ),
         home: ChatScreen(),
       ),
     );

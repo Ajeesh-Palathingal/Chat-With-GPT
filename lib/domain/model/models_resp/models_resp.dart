@@ -21,10 +21,9 @@ class ModelsResp {
   }
 
   Map<String, dynamic> toJson() => _$ModelsRespToJson(this);
-  static List<ModelsResp> modelsList(List modelsList) {
-    return modelsList.map((data) => ModelsResp.fromJson(data)).toList();
+  static List<ModelsResp> modelsList(List models) {
+    
+    final modelsList = models.map((data) => ModelsResp.fromJson(data)).toList();
+    return modelsList;
   }
 }
-
-
-
